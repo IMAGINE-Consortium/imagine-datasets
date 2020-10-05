@@ -7,7 +7,7 @@ in a format compatible with [IMAGINE](https://github.com/IMAGINE-Consortium/imag
 
 ## Usage
 
-One can list the available datasets using the packages `list` function. 
+One can list the available datasets using the package's `list` function. 
 ```python
 import imagine_datasets as img_dset
 
@@ -25,8 +25,10 @@ measurements = img.observables.Measurements(dset)
 ```
 
 Usually, a dataset is downloaded when it is requested (i.e. instantiated)
-for the first time. If a cache directory is set, the data is saved to 
-disk and will not need to be downloaded again. One can set cache directory 
+for the first time. If a *cache directory* is set, the data is saved to 
+disk and will not need to be downloaded again. 
+
+One can set cache directory 
 using the `IMAGINE_DATASET_CACHE_PATH` environment variable, for example
 including including the following line in your .bashrc file:
 ```bash
