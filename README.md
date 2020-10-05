@@ -30,7 +30,7 @@ disk and will not need to be downloaded again.
 
 One can set cache directory 
 using the `IMAGINE_DATASET_CACHE_PATH` environment variable, for example
-including including the following line in your .bashrc file:
+including the following line in your .bashrc file:
 ```bash
 export IMAGINE_DATASET_CACHE_PATH=foo/bar/DatasetCacheDir
 ```
