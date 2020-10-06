@@ -33,7 +33,7 @@ disk and thus will not need to be downloaded again.
 
 One can choose cache directory setting the module variable 
 `imagine_datasets.cache_dir` or using the environment variable
-`IMAGINE_DATASET_CACHE_PATH`, for example including the following line in 
+`IMAGINE_DATASETS_CACHE_PATH`, for example including the following line in 
 your .bashrc file:
 
 ```bash
