@@ -1,13 +1,43 @@
+# %% IMPORTS
+# Built-in imports
+import abc
 import os
+
+# Package imports
+import hickle as hkl
+
+# IMAGINE imports
 import imagine
+from imagine.tools import BaseClass, req_attr
 import imagine_datasets as img_data
 from imagine.observables.dataset import *
-import hickle as hkl
 
 __all__ = ['RepositoryDataset']
 
-class RepositoryDataset(Dataset):
-
+class RepositoryDataset(Dataset, metaclass=abc.ABCMeta):
+    """
+    Base class to be used for datasets in the IMAGINE-datasets repository
+    """
+    @property
+    @req_attr
+    def ref(self):
+        """
+        Bibliographic reference
+        
+        Example:  'Oppermann et al. (2012) A&A, 542, A93'
+        """
+        return(self.REF)
+    
+    @property
+    @req_attr
+    def ref_url(self):
+        """
+        URL to the biblographic reference
+        (preferably to the NASA ADS entry)
+        
+        """
+        return(self.REF_URL)
+    
     @property
     def cache_dir(self):
         """

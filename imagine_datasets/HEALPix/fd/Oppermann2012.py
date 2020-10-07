@@ -10,6 +10,9 @@ __all__ = ['Oppermann2012']
 
 class Oppermann2012(img.observables.FaradayDepthHEALPixDataset,
                                 img_data.RepositoryDataset):
+    REF = 'Oppermann et al. (2012) A&A, 542, A93'
+    REF_URL = 'https://ui.adsabs.harvard.edu/abs/2012A&A...542A..93O/abstract'
+    
     def __init__(self, Nside=None):
         # Tries to load from cache
         fd_data = self._load_from_cache()

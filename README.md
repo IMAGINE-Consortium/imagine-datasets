@@ -24,12 +24,27 @@ instantiating its corresponding class and including it in a
 import imagine as img
 import imagine_datasets as img_data
 dset = img_data.HEALPix.fd.Opperman2012(Nside=32)
+```
+
+Once loaded, the dataset contents can be used as a regular
+IMAGINE dataset:
+
+```python
 measurements = img.observables.Measurements(dset)
 ```
 
+Additionally, the datasets in this repository come with handy 
+attributes which point to the original publications
+
+```python
+citation = dset.ref
+citation_url = dset.ref_url
+```
+
+Datasets in this repository also support *caching*. 
 Usually, a dataset is downloaded when it is requested (i.e. instantiated)
 for the first time. If a *cache directory* is set, the data is saved to 
-disk and thus will not need to be downloaded again.
+disk and, thus, will not need to be downloaded again.
 
 One can choose cache directory setting the module variable 
 `imagine_datasets.cache_dir` or using the environment variable
