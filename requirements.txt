@@ -1,1 +1,2 @@
-imagine>=2.0.0a1
+imagine>=2.0.0a2
+hickle>=4.0.1
