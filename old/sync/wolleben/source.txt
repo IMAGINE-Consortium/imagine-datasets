@@ -1,3 +1,4 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:f81c3bd0b98df618f0171611085a69cbf8d0ff4b15645efd2cc6f3f7b5a68e84
-size 345
+http://www3.mpifr-bonn.mpg.de/div/konti/26msurvey/files/wolleben.pdf
+http://www3.mpifr-bonn.mpg.de/div/konti/26msurvey/index.html
+http://adsabs.harvard.edu/cgi-bin/nph-bib_query?bibcode=2006A%26A...448..411W&amp;db_key=AST&amp;data_type=HTML&amp;format=&amp;high=441c94725a25968
+http://vizier.cfa.harvard.edu/viz-bin/VizieR?-source=J/A+A/448/411

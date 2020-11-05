@@ -23,21 +23,21 @@ class RepositoryDataset(Dataset, metaclass=abc.ABCMeta):
     def ref(self):
         """
         Bibliographic reference
-        
+
         Example:  'Oppermann et al. (2012) A&A, 542, A93'
         """
         return(self.REF)
-    
+
     @property
     @req_attr
     def ref_url(self):
         """
         URL to the biblographic reference
         (preferably to the NASA ADS entry)
-        
+
         """
         return(self.REF_URL)
-    
+
     @property
     def cache_dir(self):
         """
@@ -57,16 +57,21 @@ class RepositoryDataset(Dataset, metaclass=abc.ABCMeta):
     def cache_path(self):
         return os.path.join(self.cache_dir, self.__class__.__name__ + '.hkl')
 
-    def _load_from_cache(self):
+    def _load_from_cache(self, name=None):
         """
         Loads data from disk cache
         """
         if self.cache_dir is not None:
-            if os.path.isfile(self.cache_path):
-                return hkl.load(self.cache_path)
+            if name is None:
+                path = self.cache_path
+            else:
+                path = os.path.join(self.cache_dir, name + '.hkl')
+
+            if os.path.isfile(path):
+                return hkl.load(path)
         return None
 
-    def _save_to_cache(self, data):
+    def _save_to_cache(self, data, name=None):
         """
         Saves data to disk cache
 
@@ -77,8 +82,11 @@ class RepositoryDataset(Dataset, metaclass=abc.ABCMeta):
             a numpy array is preferred.
         """
         if self.cache_dir is not None:
-            hkl.dump(data, self.cache_path)
-
+            if name is None:
+                path = self.cache_path
+            else:
+                path = os.path.join(self.cache_dir, name + '.hkl')
+            hkl.dump(data, path)
 
     def clean_cache(self):
         if os.path.isfile(self.cache_path):

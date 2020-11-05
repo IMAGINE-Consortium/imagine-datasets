@@ -1,3 +1,12 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:3ec6dc41bfb840297fd3a3577b89ea8532b6f83f40a7db7c50751787ca5e0311
-size 801
+http://wwwmpa.mpa-garching.mpg.de/ift/faraday/2012/index.html
+
+In this fits file, you find the the results of the paper stored in HEALPix format. The file contains six binary table extensions:
+
+1) The reconstructed signal map, i.e. the galactic Faraday depth divided by a galactic variance profile.
+2) The corresponding uncertainty map.
+3) The reconstructed map of the galactic Faraday depth in rad/m2.
+4) The corresponding uncertainty map in rad/m2.
+5) The map of the galactic variance profile, i.e. the ratio between the Faraday depth and the signal field, in rad/m2.
+6) The reconstructed angular power spectrum of the signal field.
+
+All maps are presented at a HEALPix resolution of Nside=128 and are stored in RING ordering scheme. The power spectrum ranges from multipole scales of l=0 to l=383.
