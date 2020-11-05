@@ -2,17 +2,24 @@ import requests, io
 import numpy as np
 import astropy.units as u
 from astropy.io import fits
-import healpy as hp
 import imagine as img
 import imagine_datasets as img_data
 
 __all__ = ['Oppermann2012']
 
 class Oppermann2012(img.observables.FaradayDepthHEALPixDataset,
-                                img_data.RepositoryDataset):
+                    img_data.RepositoryDataset):
+    """
+    Dataset corresponding to Oppermann et al. (2012) Faraday Depth map
+
+    Parameters
+    ----------
+    Nside : int, optional
+        Nside of the maps. If absent, the original maps are returned unchanged.
+    """
     REF = 'Oppermann et al. (2012) A&A, 542, A93'
     REF_URL = 'https://ui.adsabs.harvard.edu/abs/2012A&A...542A..93O/abstract'
-    
+
     def __init__(self, Nside=None):
         # Tries to load from cache
         fd_data = self._load_from_cache()
@@ -30,14 +37,13 @@ class Oppermann2012(img.observables.FaradayDepthHEALPixDataset,
         else:
             fd_raw, sigma_fd_raw = fd_data
 
-        # Reduces the resolution
-        if Nside is not None:
-            fd_raw = hp.pixelfunc.ud_grade(fd_raw, Nside)
-            sigma_fd_raw = hp.pixelfunc.ud_grade(sigma_fd_raw, Nside)
+        # Reduces the resolution (if needed)
+        fd_raw, sigma_fd_raw = img_data.util.adjust_nside(Nside, fd_raw,
+                                                          sigma_fd_raw)
 
         # Includes units in the data
-        fd_raw *= u.rad/u.m/u.m
-        sigma_fd_raw *= u.rad/u.m/u.m
+        fd_raw = fd_raw << u.rad/u.m/u.m
+        sigma_fd_raw = sigma_fd_raw << u.rad/u.m/u.m
 
         # Loads into the Dataset
         super().__init__(data=fd_raw, error=sigma_fd_raw)
