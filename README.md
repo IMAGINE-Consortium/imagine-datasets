@@ -23,7 +23,7 @@ instantiating its corresponding class and including it in a
 ```python
 import imagine as img
 import imagine_datasets as img_data
-dset = img_data.HEALPix.fd.Opperman2012(Nside=32)
+dset = img_data.HEALPix.fd.Oppermann2012(Nside=32)
 ```
 
 Once loaded, the dataset contents can be used as a regular
