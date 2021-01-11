@@ -101,7 +101,7 @@ class _Planck2018_Commander_base(img.observables.SynchrotronHEALPixDataset,
     INFO = 'https://wiki.cosmos.esa.int/planck-legacy-archive/index.php/Foreground_maps#Commander-derived_astrophysical_foreground_maps'
     FREQ = 30*apu.GHz
 
-    def __init__(self, Nside=None):
+    def __init__(self, Nside=1024):
         # Tries to load from cache
         sync_data = self._load_from_cache()
 
@@ -123,7 +123,7 @@ class _Planck2018_Commander_base(img.observables.SynchrotronHEALPixDataset,
         # Gets the variance from _another_ dataset
         dset_LFI = eval('Planck2018_LFI_' + self.TYPE + '_30GHz')(Nside)
         error = dset_LFI._error
-
+        
         # Reduces the resolution (if needed) and adds units
         sync_data = img_data.util.adjust_nside(Nside, sync_data) << apu.K
 

@@ -24,13 +24,14 @@ def adjust_nside(Nside, hp_map, hp_variance=None):
         Numpy array containing the variances of `hp_map`
         (returned only if originally hp_variance was not `None`).
     """
-    if Nside is None:
+    Nside_original = hp.get_nside(hp_map)
+    
+    if (Nside is None) or (Nside == Nside_original):
         if hp_variance is not None:
             return hp_map, hp_variance
         else:
             return hp_map
 
-    Nside_original = hp.get_nside(hp_map)
     assert Nside_original > Nside
 
     hp_map = hp.ud_grade(hp_map, Nside)
