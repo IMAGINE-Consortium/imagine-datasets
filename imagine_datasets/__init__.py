@@ -2,7 +2,7 @@ import os
 from . import *
 from ._repo_dataset import *
 from .__version__ import *
-
+from .util import show_available
 import pkgutil
 
 __all__ = []
